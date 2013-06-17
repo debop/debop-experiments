@@ -9,14 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hibernate-experiments</artifactId>
+    <artifactId>esper-experiments</artifactId>
+
+    <properties>
+        <esper.version>4.8.0</esper.version>
+    </properties>
 
     <dependencies>
-        <!-- debop4j -->
         <dependency>
-            <groupId>debop4j</groupId>
-            <artifactId>debop4j-data</artifactId>
+            <groupId>com.espertech</groupId>
+            <artifactId>esper</artifactId>
+            <version>${esper.version}</version>
         </dependency>
     </dependencies>
-
 </project>

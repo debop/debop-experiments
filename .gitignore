@@ -2,9 +2,10 @@ target
 bin
 *.class
 *.log
+*.iml
 .idea
 .lucene
-.iml
+
 
 # Package Files #
 # *.jar

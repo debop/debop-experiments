@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hibernate-experiments</artifactId>
+    <artifactId>scala-experiments</artifactId>
 
-    <dependencies>
-        <!-- debop4j -->
-        <dependency>
-            <groupId>debop4j</groupId>
-            <artifactId>debop4j-data</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>
