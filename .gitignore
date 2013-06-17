@@ -1,0 +1,12 @@
+target
+bin
+*.class
+*.log
+.idea
+.lucene
+.iml
+
+# Package Files #
+# *.jar
+*.war
+*.ear
