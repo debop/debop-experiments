@@ -1,6 +1,6 @@
 package kr.debop.jpa;
 
-import kr.debop.jpa.spring.HSqlJpaConfigBase;
+import kr.debop.jpa.spring.JpaHSqlConfigBase;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @since 13. 6. 18. 오후 5:56
  */
 @Configuration
-public class HSqlJpaConfig extends HSqlJpaConfigBase {
+public class JpaHSqlConfig extends JpaHSqlConfigBase {
 
     @Override
     protected String[] getMappedPackageNames() {

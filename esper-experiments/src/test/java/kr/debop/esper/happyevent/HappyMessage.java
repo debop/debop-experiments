@@ -18,4 +18,6 @@ public class HappyMessage extends ValueObjectBase {
 
     @Getter
     private final int ctr = 1;
+
+    private static final long serialVersionUID = 7457432896327566100L;
 }

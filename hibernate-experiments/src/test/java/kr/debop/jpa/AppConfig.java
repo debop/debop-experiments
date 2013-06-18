@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@Import({ HSqlJpaConfig.class })
+@Import({ JpaHSqlConfig.class })
 public class AppConfig {
 
     // Spring Bean을 추가합니다.

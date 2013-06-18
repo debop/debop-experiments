@@ -7,12 +7,12 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
- * kr.debop.jpa.spring.HSqlJpaConfigBase
+ * kr.debop.jpa.spring.JpaHSqlConfigBase
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 13. 6. 18. 오후 5:49
  */
-public abstract class HSqlJpaConfigBase extends JpaConfigBase {
+public abstract class JpaHSqlConfigBase extends JpaConfigBase {
 
     public static final String DRIVER_NAME = "org.hsqldb.jdbcDriver";
     public static final String HSQL_DIALECT = "org.hibernate.dialect.HSQLDialect";
