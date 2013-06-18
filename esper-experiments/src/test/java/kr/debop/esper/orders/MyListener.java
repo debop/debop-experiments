@@ -17,7 +17,6 @@ public class MyListener implements UpdateListener {
     public void update(EventBean[] eventBeans, EventBean[] eventBeans2) {
         EventBean eventBean = eventBeans[0];
 
-        if (log.isTraceEnabled())
-            log.trace("arg=[{}]", eventBean.get("avg(price)"));
+        log.trace("arg=[{}]", eventBean.get("avg(price)"));
     }
 }
