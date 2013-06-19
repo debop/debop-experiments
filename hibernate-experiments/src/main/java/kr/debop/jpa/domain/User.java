@@ -8,10 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * kr.debop.jpa.domain.User
@@ -20,7 +17,8 @@ import javax.persistence.Table;
  * @since 13. 6. 18. 오후 5:57
  */
 @Entity
-@Table(name="`USER`")
+@NamedQuery(name = "User.findByUsername", query = "from User u where u.username=?1")
+@Table(name = "`USER`")
 @DynamicInsert
 @DynamicUpdate
 @Getter
@@ -31,19 +29,23 @@ public class User extends AnnotatedEntityBase {
     @GeneratedValue
     private Long id;
 
-    private String name;
+    @Column(unique = true)
+    private String username;
+
+    private String firstname;
+    private String lastname;
 
     @Override
     public int hashCode() {
         return isPersisted() ? HashTool.compute(id)
-                : HashTool.compute(name);
+                : HashTool.compute(username);
 
     }
 
     @Override
     protected Objects.ToStringHelper buildStringHelper() {
         return super.buildStringHelper()
-                .add("name", name);
+                    .add("name", username);
     }
 
     private static final long serialVersionUID = -2984784913856835525L;

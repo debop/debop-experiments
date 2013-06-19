@@ -1,5 +1,6 @@
 package kr.debop.jpa;
 
+import kr.debop.jpa.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +34,15 @@ public class JpaSetupTest {
 
         EntityManager em = emf.createEntityManager();
         assertThat(em).isNotNull();
+
+        em.getTransaction().begin();
+
+        User user = new User();
+        user.setUsername("debop");
+        em.persist(user);
+
+        em.getTransaction().commit();
+
         em.close();
     }
 

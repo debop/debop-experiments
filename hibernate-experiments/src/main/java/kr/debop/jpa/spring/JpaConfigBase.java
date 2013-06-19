@@ -73,7 +73,7 @@ public abstract class JpaConfigBase {
         String[] packageNames = getMappedPackageNames();
         if (packageNames != null) {
             log.info("JPA Entity들을 스캔합니다. packages=[{}]", StringTool.listToString(packageNames));
-            factoryBean.setPackagesToScan();
+            factoryBean.setPackagesToScan(packageNames);
         }
 
         factoryBean.afterPropertiesSet();
