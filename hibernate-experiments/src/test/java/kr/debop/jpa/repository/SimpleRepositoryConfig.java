@@ -1,22 +1,25 @@
-package kr.debop.jpa;
+package kr.debop.jpa.repository;
 
-import kr.debop.jpa.repository.UserRepository;
+import kr.debop.jpa.JpaHSqlConfig;
+import kr.debop.jpa.repository.simple.SimpleUserRepository;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * PACKAGE_NAME.kr.debop.jpa.AppConfig
+ * kr.debop.jpa.repository.SimpleRepositoryConfig
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
- * @since 13. 6. 18. 오후 5:55
+ * @since 13. 6. 19. 오후 11:40
  */
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = { UserRepository.class })
-@Import({ JpaHSqlConfig.class })
-public class AppConfig {
+@ComponentScan( basePackageClasses = { SimpleUserRepository.class } )
+@Import( { JpaHSqlConfig.class } )
+public class SimpleRepositoryConfig {
 
-    // Spring Bean을 추가합니다.
+
 }
