@@ -5,9 +5,9 @@ bin
 *.iml
 .idea
 .lucene
-
+logs
 
 # Package Files #
-# *.jar
+*.jar
 *.war
 *.ear
