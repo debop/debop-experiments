@@ -1,8 +1,6 @@
 package kr.debop.jpa;
 
-import kr.debop.jpa.repository.UserRepository;
 import kr.debop.jpa.spring.JpaHSqlConfigBase;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -12,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
  * @since 13. 6. 18. 오후 5:56
  */
 @Configuration
-@ComponentScan(basePackageClasses = { UserRepository.class })
 public class JpaHSqlConfig extends JpaHSqlConfigBase {
 
     @Override

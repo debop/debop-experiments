@@ -2,6 +2,7 @@ package kr.debop.jpa.repository;
 
 import kr.debop.jpa.AppConfig;
 import kr.debop.jpa.domain.User;
+import kr.debop.jpa.repository.simple.SimpleUserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

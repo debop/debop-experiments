@@ -1,4 +1,4 @@
-package kr.debop.jpa.repository;
+package kr.debop.jpa.repository.simple;
 
 import kr.debop.jpa.domain.User;
 import org.springframework.stereotype.Repository;
@@ -11,25 +11,24 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * kr.debop.jpa.repository.UserRepositoryImpl
+ * kr.debop.jpa.repository.simple.SimpleUserRepositoryImpl
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
- * @since 13. 6. 19. 오후 10:33
+ * @since 13. 6. 20. 오전 9:23
  */
 @Repository
-public class UserRepositoryImpl implements UserRepository {
+public class SimpleUserRepositoryImpl implements SimpleUserRepository {
 
     @PersistenceContext
     private EntityManager em;
 
-    public UserRepositoryImpl() { }
+    public SimpleUserRepositoryImpl() { }
 
-    public UserRepositoryImpl(EntityManager em) {
+    public SimpleUserRepositoryImpl(EntityManager em) {
         this.em = em;
     }
 
 
-    @Override
     public List<User> myCustomBatchOperation() {
         CriteriaQuery<User> criteriaQuery = em.getCriteriaBuilder().createQuery(User.class);
         return em.createQuery(criteriaQuery).getResultList();
@@ -64,6 +63,13 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> findByFirstname(String firstname) {
         Query query = em.createQuery("from User u where u.firstname = :firstname");
         query.setParameter("firstname", firstname);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<User> findByFirstnameOrLastname(String name) {
+        Query query = em.createQuery("from User u where u.firstname = :name or u.lastname = :name");
+        query.setParameter("name", name);
         return query.getResultList();
     }
 }

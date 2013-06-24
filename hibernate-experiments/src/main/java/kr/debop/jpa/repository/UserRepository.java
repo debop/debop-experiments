@@ -1,10 +1,8 @@
 package kr.debop.jpa.repository;
 
 import kr.debop.jpa.domain.User;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +11,11 @@ import java.util.List;
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 13. 6. 19. 오후 2:18
  */
-public interface UserRepository extends CrudRepository<User, Long>, UserRepositoryCustom {
+public interface UserRepository extends UserRepositoryCustom {
+
+    User save(User user);
+
+    User findOne(Serializable id);
 
     /**
      * Find user by user name
@@ -32,6 +34,5 @@ public interface UserRepository extends CrudRepository<User, Long>, UserReposito
      * @param firstname
      * @return
      */
-    @Query("select u from User u where u.firstname = ?1")
     List<User> findByFirstname(String firstname);
 }

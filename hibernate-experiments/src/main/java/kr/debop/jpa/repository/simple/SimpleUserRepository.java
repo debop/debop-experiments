@@ -1,10 +1,8 @@
 package kr.debop.jpa.repository.simple;
 
 import kr.debop.jpa.domain.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +11,11 @@ import java.util.List;
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 13. 6. 19. 오후 10:38
  */
-public interface SimpleUserRepository extends JpaRepository<User, Long> {
+public interface SimpleUserRepository {
+
+    User save(User user);
+
+    User findOne(Serializable id);
 
     /** Find user by user name */
     User findByUsername(String username);
@@ -32,9 +34,7 @@ public interface SimpleUserRepository extends JpaRepository<User, Long> {
      * @param firstname
      * @return
      */
-    @Query( "select u from User u where u.firstname = ?1" )
     List<User> findByFirstname(String firstname);
 
-    @Query( "select u from User u where u.firstname = :name or u.lastname = :name" )
-    List<User> findByFirstnameOrLastname(@Param( "name" ) String name);
+    List<User> findByFirstnameOrLastname(String name);
 }

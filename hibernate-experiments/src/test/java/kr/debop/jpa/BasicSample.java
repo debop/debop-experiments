@@ -1,20 +1,21 @@
 package kr.debop.jpa;
 
 import kr.debop.jpa.domain.User;
+import kr.debop.jpa.repository.UserRepository;
+import kr.debop.jpa.repository.UserRepositoryImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.fest.assertions.Assertions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 /**
  * kr.debop.jpa.BasicSample
@@ -30,13 +31,13 @@ public class BasicSample {
     @Autowired
     EntityManagerFactory factory;
 
-    private CrudRepository<User, Long> userRepository;
+    private UserRepository userRepository;
     private EntityManager em;
 
     @Before
     public void before() {
         em = factory.createEntityManager();
-        userRepository = new SimpleJpaRepository<User, Long>(User.class, em);
+        userRepository = new UserRepositoryImpl(em);
         em.getTransaction().begin();
     }
 
@@ -51,7 +52,7 @@ public class BasicSample {
         user.setUsername("username");
 
         user = userRepository.save(user);
-        em.clear();
-        Assertions.assertThat(userRepository.findOne(user.getId())).isEqualTo(user);
+        //em.clear();
+        assertThat(userRepository.findOne(user.getId())).isEqualTo(user);
     }
 }

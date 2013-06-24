@@ -2,6 +2,7 @@ package kr.debop.jpa.domain;
 
 import com.google.common.base.Objects;
 import kr.debop4j.core.tools.HashTool;
+import kr.debop4j.data.jpa.domain.JpaEntityBase;
 import kr.debop4j.data.model.AnnotatedEntityBase;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +24,7 @@ import javax.persistence.*;
 @DynamicUpdate
 @Getter
 @Setter
-public class User extends AnnotatedEntityBase {
+public class User extends JpaEntityBase {
 
     @Id
     @GeneratedValue
