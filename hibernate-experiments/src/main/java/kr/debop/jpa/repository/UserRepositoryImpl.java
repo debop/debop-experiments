@@ -2,6 +2,7 @@ package kr.debop.jpa.repository;
 
 import kr.debop.jpa.domain.User;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,6 +18,7 @@ import java.util.List;
  * @since 13. 6. 19. 오후 10:33
  */
 @Repository
+@Transactional
 public class UserRepositoryImpl implements UserRepository {
 
     @PersistenceContext
