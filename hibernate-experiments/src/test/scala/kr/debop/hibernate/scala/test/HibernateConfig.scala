@@ -3,7 +3,7 @@ package kr.debop.hibernate.scala.test
 import kr.debop4j.data.hibernate.spring.HSqlConfigBase
 import org.springframework.context.annotation.Configuration
 import org.springframework.transaction.annotation.EnableTransactionManagement
-import kr.debop4j.hibernate.scala.model.Buddy
+import kr.debop4j.hibernate.scala.model.{Team, Buddy}
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean
 
 /**
@@ -20,7 +20,7 @@ class HibernateConfig extends HSqlConfigBase {
   override def getMappedPackageNames: Array[String] = Array()
 
   override def setupSessionFactory(factoryBean: LocalSessionFactoryBean) {
-    factoryBean.setAnnotatedClasses(Array(classOf[Buddy]))
+    factoryBean.setAnnotatedClasses(Array(classOf[Team], classOf[Buddy]))
   }
 
 }
