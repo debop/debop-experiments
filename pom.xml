@@ -22,7 +22,7 @@
         <jdk.version>1.7</jdk.version>
         <debop4j.version>1.0.0.Alpha</debop4j.version>
         <scala.version>2.10.2</scala.version>
-        <akka.version>2.1.4</akka.version>
+        <akka.version>2.2.0-RC2</akka.version>
 
         <commons.codec.version>1.7</commons.codec.version>
         <commons.io.version>2.1</commons.io.version>
