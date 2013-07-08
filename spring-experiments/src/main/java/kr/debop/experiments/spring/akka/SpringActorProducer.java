@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 13. 7. 8. 오후 10:24
  */
+@SuppressWarnings("unchecked")
 public class SpringActorProducer implements IndirectActorProducer {
 
     final ApplicationContext applicationContext;
