@@ -20,8 +20,9 @@
 
     <properties>
         <jdk.version>1.7</jdk.version>
-        <debop4j.version>0.9.5</debop4j.version>
+        <debop4j.version>1.0.0.Alpha</debop4j.version>
         <scala.version>2.10.2</scala.version>
+        <akka.version>2.1.4</akka.version>
 
         <commons.codec.version>1.7</commons.codec.version>
         <commons.io.version>2.1</commons.io.version>
@@ -81,10 +82,10 @@
         <spring.batch.version>2.2.0.RELEASE</spring.batch.version>
         <spring.integration.version>2.2.4.RELEASE</spring.integration.version>
 
-        <hibernate.version>4.2.1.Final</hibernate.version>
+        <hibernate.version>4.2.2.Final</hibernate.version>
         <hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
 
-        <hibernate.search.version>4.2.0.Final</hibernate.search.version>
+        <hibernate.search.version>4.3.0.Final</hibernate.search.version>
 
         <hibernate.ogm.version>4.0.0.Beta2</hibernate.ogm.version>
         <hibernate.ogm.mongo.version>4.0.0.Beta1</hibernate.ogm.mongo.version>
@@ -106,8 +107,9 @@
         <mongo.driver.version>2.11.0</mongo.driver.version>
         <ehcache.version>2.6.5</ehcache.version>
         <jedis.version>2.1.0</jedis.version>
+        <infinispan.version>5.3.0.Final</infinispan.version>
 
-        <tomcat.jdbc.version>7.0.37</tomcat.jdbc.version>
+        <tomcat.jdbc.version>7.0.41</tomcat.jdbc.version>
         <bonecp.version>0.7.1.RELEASE</bonecp.version>
 
         <avro.version>1.7.4</avro.version>
@@ -147,13 +149,22 @@
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
+            <artifactId>scala-reflect</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
             <artifactId>scala-actors</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-partest</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Akka -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.10</artifactId>
         </dependency>
 
         <!-- Spring framework -->
@@ -330,12 +341,23 @@
                 <artifactId>scala-actors</artifactId>
                 <version>${scala.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-reflect</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-partest</artifactId>
                 <version>${scala.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <!-- Akka -->
+            <dependency>
+                <groupId>com.typesafe.akka</groupId>
+                <artifactId>akka-actor_2.10</artifactId>
+                <version>${akka.version}</version>
             </dependency>
 
             <!-- Apache Commons -->
@@ -902,6 +924,30 @@
                 <version>${jedis.version}</version>
             </dependency>
 
+            <!-- Infinispan -->
+            <dependency>
+                <groupId>org.infinispan</groupId>
+                <artifactId>infinispan-core</artifactId>
+                <version>${infinispan.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.infinispan</groupId>
+                <artifactId>infinispan-spring</artifactId>
+                <version>${infinispan.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.infinispan</groupId>
+                <artifactId>infinispan-lucene-v3</artifactId>
+                <version>${infinispan.version}</version>
+            </dependency>
+
+            <!-- Infinispan for hibernate cache -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-infinispan</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+
             <!-- Netty -->
             <dependency>
                 <groupId>io.netty</groupId>
@@ -1252,13 +1298,22 @@
             <name>Spring RELEASE Repository</name>
             <url>http://repo.springsource.org/libs-release</url>
         </repository>
+        <!--<repository>-->
+        <!--<id>jboss-maven2-release-repository</id>-->
+        <!--<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>-->
+        <!--</repository>-->
         <repository>
-            <id>jboss-maven2-release-repository</id>
-            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
-        </repository>
-        <repository>
-            <id>jboss-hibernate</id>
-            <url>https://repository.jboss.org/nexus/content/groups/public/org/hibernate/</url>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
         </repository>
         <repository>
             <id>typesafe</id>
@@ -1275,14 +1330,52 @@
             </snapshots>
         </repository>
         <repository>
-            <id>lambdaj</id>
-            <name>Lambdaj Repository</name>
-            <url>http://lambdaj.googlecode.com/svn/repo/releases/</url>
-        </repository>
-        <repository>
             <id>maven2-repository.dev.java.net</id>
             <name>Java.net Repository for Maven</name>
             <url>http://download.java.net/maven/2/</url>
         </repository>
     </repositories>
+
+    <profiles>
+        <profile>
+            <id>jboss-public-repository</id>
+            <activation>
+                <property>
+                    <name>jboss-public-repository</name>
+                    <value>!false</value>
+                </property>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>jboss-public-repository-group</id>
+                    <name>JBoss Public Maven Repository Group</name>
+                    <url>http://repository.jboss.org/nexus/content/groups/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>jboss-public-repository-group</id>
+                    <name>JBoss Public Maven Repository Group</name>
+                    <url>http://repository.jboss.org/nexus/content/groups/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+
+    </profiles>
 </project>
