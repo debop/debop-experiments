@@ -1,4 +1,4 @@
-package kr.debop.spring.tests.provider;
+package kr.debop.spring.tests.akka.provider;
 
 import kr.debop.spring.tests.SpringConfiguration;
 import lombok.extern.slf4j.Slf4j;
@@ -15,14 +15,14 @@ import javax.inject.Provider;
 import static org.fest.assertions.Assertions.assertThat;
 
 /**
- * kr.debop.spring.tests.provider.ProviderTest
+ * ProviderTest
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 13. 6. 24. 오후 7:02
  */
 @Slf4j
-@RunWith( SpringJUnit4ClassRunner.class )
-@ContextConfiguration( classes = { SpringConfiguration.class } )
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { SpringConfiguration.class })
 public class ProviderTest {
 
     @Autowired

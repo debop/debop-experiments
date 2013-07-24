@@ -5,6 +5,7 @@ import akka.actor.ExtendedActorSystem;
 import akka.actor.Extension;
 import akka.actor.Props;
 import org.springframework.context.ApplicationContext;
+import scala.collection.Seq$;
 
 /**
  * kr.debop.experiments.spring.akka.SpringExtension
@@ -30,7 +31,12 @@ public class SpringExtension extends AbstractExtensionId<SpringExtension.SpringE
         }
 
         public Props props(String actorBeanName) {
-            return Props.create(SpringActorProducer.class, applicationContext, actorBeanName);
+            return
+                Props.create(SpringActorProducer.class,
+                             Seq$.MODULE$.newBuilder()
+                                 .$plus$eq(applicationContext)
+                                 .$plus$eq(actorBeanName)
+                                 .result());
         }
     }
 }

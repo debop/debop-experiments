@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,15 +21,16 @@ import static org.fest.assertions.Assertions.assertThat;
  * @since 13. 6. 26. 오후 4:17
  */
 @Slf4j
-@RunWith( SpringJUnit4ClassRunner.class )
-@ContextConfiguration( classes = { HibernateConfig.class } )
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { HibernateConfig.class })
 public class HibernateDaoTest {
 
     @Autowired
+    @Qualifier("hibernateDao")
     IHibernateDao dao;
 
     @Test
-    @Transactional( readOnly = true )
+    @Transactional(readOnly = true)
     public void setupTest() {
         assertThat(dao).isNotNull();
         assertThat(dao.getSession()).isNotNull();
