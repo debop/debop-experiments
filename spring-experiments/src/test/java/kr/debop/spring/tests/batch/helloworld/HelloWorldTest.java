@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.fest.assertions.Assertions.assertThat;
 
 /**
- * kr.debop.spring.tests.batch.helloworld.HelloWorldTest
+ * Hello World Job 을 수행합니다.
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 13. 7. 24. 오후 7:01

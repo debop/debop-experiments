@@ -15,7 +15,7 @@ import scala.collection.Seq$;
  */
 public class SpringExtension extends AbstractExtensionId<SpringExtension.SpringExt> {
 
-    public static SpringExtension springExtProvider = new SpringExtension();
+    public static final SpringExtension springExtProvider = new SpringExtension();
 
     @Override
     public SpringExt createExtension(ExtendedActorSystem system) {
