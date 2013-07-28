@@ -1,5 +1,6 @@
-package kr.debop.spring.tests.batch.helloworld;
+package com.apress.springbatch.chapter2;
 
+import com.apress.springbatch.BatchConfiguration;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -9,6 +10,7 @@ import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.transaction.PlatformTransactionManager;
 
 /**
@@ -18,7 +20,8 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @since 13. 7. 24. 오후 7:15
  */
 @Configuration
-public class JobConfiguration {
+@Import(BatchConfiguration.class)
+public class HelloWorldJobConfiguration {
 
     @Autowired
     JobBuilderFactory jobBuilders;
@@ -47,7 +50,6 @@ public class JobConfiguration {
                            .repository(jobRepository)
                            .transactionManager(transactionManager)
                            .build();
-
     }
 
     @Bean

@@ -1,4 +1,4 @@
-package kr.debop.spring.tests.batch.helloworld;
+package com.apress.springbatch.chapter2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import static org.fest.assertions.Assertions.assertThat;
  * @since 13. 7. 24. 오후 7:01
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { HelloWorldConfiguration.class, JobConfiguration.class })
+@ContextConfiguration(classes = { HelloWorldJobConfiguration.class })
 public class HelloWorldTest {
 
     @Autowired

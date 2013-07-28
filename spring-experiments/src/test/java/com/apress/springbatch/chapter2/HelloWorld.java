@@ -1,4 +1,4 @@
-package kr.debop.spring.tests.batch.helloworld;
+package com.apress.springbatch.chapter2;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepContribution;
@@ -19,7 +19,7 @@ public class HelloWorld implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-        log.debug(HELLO_WORLD);
+        log.debug("Tasklet execute: " + HELLO_WORLD);
         return RepeatStatus.FINISHED;
     }
 }

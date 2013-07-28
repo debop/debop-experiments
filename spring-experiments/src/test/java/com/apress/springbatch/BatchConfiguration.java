@@ -1,5 +1,6 @@
-package kr.debop.spring.tests.batch.helloworld;
+package com.apress.springbatch;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.configuration.JobRegistry;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor;
@@ -25,41 +26,20 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 /**
- * kr.debop.spring.tests.batch.helloworld.HelloWorldConfiguration
+ * kr.debop.spring.tests.batch.BatchConfiguration
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
- * @since 13. 7. 24. 오후 6:25
+ * @since 13. 7. 28. 오후 1:40
  */
+@Slf4j
 @Configuration
 @EnableBatchProcessing
 @ImportResource({ "classpath:spring-batch-schema.xml" })
-public class HelloWorldConfiguration {
-
-//    @Value("classpath:schema-drop-hsqldb.sql")
-//    private Resource schemaDropScript;
-//
-//    @Value("classpath:schema-hsqldb.sql")
-//    private Resource schemaScript;
-//
-//    @Bean
-//    public DataSourceInitializer dataSourceInitializer(final DataSource dataSource) {
-//        final DataSourceInitializer initializer = new DataSourceInitializer();
-//        initializer.setDataSource(dataSource);
-//        initializer.setDatabasePopulator(databasePopulator());
-//
-//        return initializer;
-//    }
-//
-//    private DatabasePopulator databasePopulator() {
-//        final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-//        populator.addScript(schemaDropScript);
-//        populator.addScript(schemaScript);
-//
-//        return populator;
-//    }
+public class BatchConfiguration {
 
     @Bean
     public DataSource dataSource() {
+        log.info("create DataSource");
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         return builder.setType(EmbeddedDatabaseType.HSQL).build();
     }
@@ -67,6 +47,19 @@ public class HelloWorldConfiguration {
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
+    }
+
+    @Bean
+    public PropertyPlaceholderConfigurer placeHolderProperties() throws Exception {
+
+        log.info("create PropertyPlaceholderConfigurer");
+        PropertyPlaceholderConfigurer configurer = new PropertyPlaceholderConfigurer();
+        configurer.setLocation(new ClassPathResource("batch.properties"));
+        configurer.setSystemPropertiesModeName("SYSTEM_PROPERTIES_MODE_OVERRIDE");
+        configurer.setIgnoreUnresolvablePlaceholders(true);
+        configurer.setOrder(1);
+
+        return configurer;
     }
 
     @Bean
@@ -111,6 +104,8 @@ public class HelloWorldConfiguration {
 
     @Bean
     public JobRepository jobRepository() throws Exception {
+        log.info("create JobRepository...");
+
         JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
         factory.setDataSource(dataSource());
         factory.setTransactionManager(transactionManager());
@@ -118,17 +113,4 @@ public class HelloWorldConfiguration {
         factory.afterPropertiesSet();
         return factory.getJobRepository();
     }
-
-
-    @Bean
-    public PropertyPlaceholderConfigurer placeHolderProperties() throws Exception {
-        PropertyPlaceholderConfigurer configurer = new PropertyPlaceholderConfigurer();
-        configurer.setLocation(new ClassPathResource("batch.properties"));
-        configurer.setSystemPropertiesModeName("SYSTEM_PROPERTIES_MODE_OVERRIDE");
-        configurer.setIgnoreUnresolvablePlaceholders(true);
-        configurer.setOrder(1);
-
-        return configurer;
-    }
-
 }
