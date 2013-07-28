@@ -28,13 +28,15 @@ public class HelloWorld implements Tasklet {
     public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
         String name = (String) chunkContext.getStepContext().getJobParameters().get("name");
 
+        log.info("jobParameters name=[{}]", name);
+
         ExecutionContext jobContext = chunkContext.getStepContext()
                                                   .getStepExecution()
                                                   .getJobExecution()
                                                   .getExecutionContext();
         jobContext.put("user.name", name);
 
-        log.info(String.format(HELLO_WORLD, name));
+        log.info(String.format(HELLO_WORLD, this.name));
 
         return RepeatStatus.FINISHED;
     }

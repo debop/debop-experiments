@@ -3,6 +3,8 @@ package com.apress.springbatch;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.configuration.JobRegistry;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor;
 import org.springframework.batch.core.configuration.support.MapJobRegistry;
 import org.springframework.batch.core.explore.JobExplorer;
@@ -33,7 +35,7 @@ import javax.sql.DataSource;
  */
 @Slf4j
 @Configuration
-@EnableBatchProcessing
+@EnableBatchProcessing(modular = true)
 @ImportResource({ "classpath:spring-batch-schema.xml" })
 public class BatchConfiguration {
 
@@ -113,4 +115,16 @@ public class BatchConfiguration {
         factory.afterPropertiesSet();
         return factory.getJobRepository();
     }
+
+    @Bean
+    public JobBuilderFactory jobBuilderFactory() throws Exception {
+        return new JobBuilderFactory(jobRepository());
+    }
+
+    @Bean
+    public StepBuilderFactory stepBuilderFactory() throws Exception {
+        return new StepBuilderFactory(jobRepository(), transactionManager());
+    }
 }
+
+

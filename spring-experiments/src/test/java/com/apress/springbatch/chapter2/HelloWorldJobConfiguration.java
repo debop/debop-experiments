@@ -40,7 +40,8 @@ public class HelloWorldJobConfiguration {
     public Job helloWorldJob() throws Exception {
         return jobBuilders.get("helloWorldJob")
                           .repository(jobRepository)
-                          .start(helloWorldStep()).build();
+                          .start(helloWorldStep())
+                          .build();
     }
 
     @Bean
