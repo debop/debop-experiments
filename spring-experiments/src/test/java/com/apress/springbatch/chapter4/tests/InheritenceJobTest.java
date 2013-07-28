@@ -1,4 +1,4 @@
-package com.apress.springbatch.chapter4;
+package com.apress.springbatch.chapter4.tests;
 
 import com.apress.springbatch.chapter4.jobs.InheritenceJobConfiguration;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import java.util.Map;
 import static org.fest.assertions.Assertions.assertThat;
 
 /**
- * com.apress.springbatch.chapter4.InheritenceJobTest
+ * com.apress.springbatch.chapter4.tests.InheritenceJobTest
  *
  * @author 배성혁 sunghyouk.bae@gmail.com
  * @since 13. 7. 28. 오후 6:26

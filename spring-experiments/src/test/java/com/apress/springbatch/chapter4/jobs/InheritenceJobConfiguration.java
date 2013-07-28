@@ -1,14 +1,18 @@
 package com.apress.springbatch.chapter4.jobs;
 
+import com.apress.springbatch.BatchConfiguration;
 import com.apress.springbatch.chapter4.ExampleJobListener;
 import com.apress.springbatch.chapter4.HelloWorld;
 import com.apress.springbatch.chapter4.ParameterValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * com.apress.springbatch.chapter4.jobs.InheritenceJobConfiguration
@@ -17,6 +21,9 @@ import org.springframework.context.annotation.Bean;
  * @since 13. 7. 28. 오후 4:54
  */
 @Slf4j
+@Configuration
+@EnableBatchProcessing(modular = true)
+@Import(BatchConfiguration.class)
 public class InheritenceJobConfiguration extends AbstractJobConfiguration {
 
 

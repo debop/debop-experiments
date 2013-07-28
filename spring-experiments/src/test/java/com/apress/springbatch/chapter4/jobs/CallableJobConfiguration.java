@@ -1,11 +1,15 @@
 package com.apress.springbatch.chapter4.jobs;
 
+import com.apress.springbatch.BatchConfiguration;
 import com.apress.springbatch.chapter4.CallableLogger;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.step.tasklet.CallableTaskletAdapter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * com.apress.springbatch.chapter4.jobs.CallableJobConfiguration
@@ -14,6 +18,9 @@ import org.springframework.context.annotation.Bean;
  * @since 13. 7. 28. 오후 7:46
  */
 @Slf4j
+@Configuration
+@EnableBatchProcessing(modular = true)
+@Import(BatchConfiguration.class)
 public class CallableJobConfiguration extends AbstractJobConfiguration {
 
     @Bean
