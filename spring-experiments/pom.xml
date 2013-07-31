@@ -19,6 +19,12 @@
             <artifactId>spring-jdbc</artifactId>
         </dependency>
 
+        <!-- Spring Retry -->
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+        </dependency>
+
         <!-- Spring Integration -->
         <dependency>
             <groupId>org.springframework.integration</groupId>
@@ -42,6 +48,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Quartz -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
+
+        <!-- Database Driver -->
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>

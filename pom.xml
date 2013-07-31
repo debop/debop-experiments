@@ -69,7 +69,7 @@
         <logback.version>1.0.13</logback.version>
         <commons.logging.version>1.1.2</commons.logging.version>
 
-        <lombok.version>0.11.8</lombok.version>
+        <lombok.version>0.12.0</lombok.version>
 
         <springframework.version>3.2.3.RELEASE</springframework.version>
         <springframework.data.version>1.0.0.RELEASE</springframework.data.version>
@@ -80,7 +80,7 @@
         <spring.data.redis.version>1.0.4.RELEASE</spring.data.redis.version>
         <spring.data.mongo.version>1.2.1.RELEASE</spring.data.mongo.version>
 
-        <spring.batch.version>2.2.0.RELEASE</spring.batch.version>
+        <spring.batch.version>2.2.1.RELEASE</spring.batch.version>
         <spring.integration.version>2.2.4.RELEASE</spring.integration.version>
 
         <hibernate.version>4.2.2.Final</hibernate.version>
@@ -678,6 +678,13 @@
                 <version>${springframework.version}</version>
             </dependency>
 
+            <!-- Spring Retry -->
+            <dependency>
+                <groupId>org.springframework.retry</groupId>
+                <artifactId>spring-retry</artifactId>
+                <version>1.0.2.RELEASE</version>
+            </dependency>
+
             <!-- Spring Integration -->
             <dependency>
                 <groupId>org.springframework.integration</groupId>
@@ -722,6 +729,13 @@
                 <artifactId>spring-batch-test</artifactId>
                 <version>${spring.batch.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <!-- Quartz -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>2.2.0</version>
             </dependency>
 
             <!-- Spring Data -->
@@ -991,7 +1005,6 @@
             </dependency>
 
             <!-- Database Drivers -->
-
             <dependency>
                 <groupId>org.hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>

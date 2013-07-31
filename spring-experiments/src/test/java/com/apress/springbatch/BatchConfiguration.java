@@ -20,9 +20,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -98,9 +100,21 @@ public class BatchConfiguration {
     }
 
     @Bean
+    public TaskExecutor taskExecutor() throws Exception {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setMaxPoolSize(16);
+        executor.setThreadPriority(1);
+
+        executor.afterPropertiesSet();
+        return executor;
+    }
+
+    @Bean
     public JobLauncher jobLauncher() throws Exception {
         SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
         jobLauncher.setJobRepository(jobRepository());
+        //jobLauncher.setTaskExecutor(taskExecutor());
+
         return jobLauncher;
     }
 

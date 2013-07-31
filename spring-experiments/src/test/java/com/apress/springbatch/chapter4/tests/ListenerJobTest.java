@@ -30,7 +30,7 @@ public class ListenerJobTest {
     Job listenerJob;
 
     @Test
-    public void inheritenceJobTest() throws Exception {
+    public void listenerJobTest() throws Exception {
         JobParameters jobParameters = new JobParametersBuilder().addString("name", "sunghyouk bae")
                                                                 .toJobParameters();
 

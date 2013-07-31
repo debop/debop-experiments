@@ -10,7 +10,6 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -28,7 +27,7 @@ import org.springframework.context.annotation.Import;
 public class InheritenceJobConfiguration extends AbstractJobConfiguration {
 
 
-    @Value("#{jobParameters[name]}") String name;
+    // @Value("#{jobParameters[name]}") String name;
 
     @Bean(name = "helloWorld")
     @StepScope
