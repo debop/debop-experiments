@@ -17,6 +17,7 @@
         <module>spring-mvc-experiments</module>
         <module>camel</module>
         <module>vertx-experiments</module>
+        <module>avro-experiments</module>
     </modules>
 
     <properties>
@@ -99,7 +100,7 @@
         <jboss.logging.version>3.1.3.GA</jboss.logging.version>
 
         <lucene.version>3.6.2</lucene.version>
-        <io.netty.version>3.6.3.Final</io.netty.version>
+        <io.netty.version>3.6.6.Final</io.netty.version>
 
         <querydsl.version>3.1.1</querydsl.version>
 

@@ -1,0 +1,29 @@
+@namespace("kr.experiments.avro.rpc")
+
+protocol EntityService {
+
+    record Entity {
+        long id;
+        long createdTime;
+        string body;
+
+        @java_class("java.util.HashMap") map<string> attrs;
+    }
+
+    // 서버와의 통신 가능 여부를 확인하기 위한 방법
+    string ping();      // return "PONG"
+
+    // persist entity
+    boolean persist(Entity entity);
+
+    // persist entities
+    boolean persistAll(array<Entity> entities);
+
+    // delete entity
+    boolean delete(Entity entity);
+
+    // delete entity
+    boolean deleteById(long id);
+
+    void clearAll();
+}
