@@ -20,7 +20,7 @@ public interface EntityService {
 
     boolean deleteById(long id) throws org.apache.avro.AvroRemoteException;
 
-    java.lang.Void clearAll() throws org.apache.avro.AvroRemoteException, InterruptedException;
+    java.lang.Void clearAll() throws org.apache.avro.AvroRemoteException;
 
     @SuppressWarnings("all")
     public interface Callback extends EntityService {
