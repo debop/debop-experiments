@@ -45,6 +45,7 @@ public class ReceiveLogs {
         while (true) {
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
             String message = StringUtils.newStringUtf8(delivery.getBody());
+
             log.debug(" [x] Received = [{}]", message);
         }
     }

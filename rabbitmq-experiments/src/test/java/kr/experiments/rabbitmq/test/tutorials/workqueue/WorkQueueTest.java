@@ -25,10 +25,10 @@ public class WorkQueueTest {
         newTask = new NewTask();
         newTask.connectQueue();
 
-        worker = new Worker();
+        worker = new Worker("worker1");
         worker.connectQueue();
 
-        worker2 = new Worker();
+        worker2 = new Worker("worker2");
         worker2.connectQueue();
     }
 
@@ -79,7 +79,7 @@ public class WorkQueueTest {
             @Override
             public void run() {
                 try {
-                    worker.receive();
+                    worker2.receive();
                 } catch (InterruptedException e) {
                     // ignore
                 } catch (IOException e) {

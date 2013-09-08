@@ -27,6 +27,7 @@ public class EmitLog {
         factory.setHost("localhost");
         connection = factory.newConnection();
         channel = connection.createChannel();
+
         channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
     }
 
@@ -36,10 +37,7 @@ public class EmitLog {
     }
 
     public void send(String message) throws IOException {
-        channel.basicPublish(EXCHANGE_NAME,
-                             "",
-                             null,
-                             getBytesUtf8(message));
-        EmitLog.log.debug(" [x] Sent [{}]", message);
+        channel.basicPublish(EXCHANGE_NAME, "", null, getBytesUtf8(message));
+        log.debug(" [x] Sent [{}]", message);
     }
 }

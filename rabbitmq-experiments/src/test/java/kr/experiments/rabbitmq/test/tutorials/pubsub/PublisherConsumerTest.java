@@ -78,7 +78,7 @@ public class PublisherConsumerTest {
             @Override
             public void run() {
                 try {
-                    receiveLog.receive();
+                    receiveLog2.receive();
                 } catch (InterruptedException e) {
                     // ignore
                 } catch (IOException e) {

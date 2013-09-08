@@ -18,6 +18,12 @@ import java.io.IOException;
 @Slf4j
 public class Worker {
 
+    private final String name;
+
+    public Worker(String name) {
+        this.name = name;
+    }
+
     private final static String TASK_QUEUE_NAME = "task.queue";
 
     private Connection connection;
@@ -29,6 +35,7 @@ public class Worker {
         connection = factory.newConnection();
         channel = connection.createChannel();
         channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
+        channel.basicQos(1);
 
         log.debug(" [*] Waiting for messages...");
     }
@@ -41,8 +48,12 @@ public class Worker {
         while (true) {
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
             String message = StringUtils.newStringUtf8(delivery.getBody());
-            log.debug(" [x] Received = [{}]", message);
 
+            // 여기에 작업을 넣습니다.
+            log.debug(" [x] Received = [{}], worker=[{}]", message, name);
+            Thread.sleep(15);
+
+            // 작업 결과가 성공하면, Queue에 작업완료를 알린다.
             channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
         }
     }
