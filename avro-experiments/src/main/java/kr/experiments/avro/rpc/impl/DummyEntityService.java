@@ -47,9 +47,9 @@ public class DummyEntityService implements EntityService {
 
     @Override
     public Void clearAll() throws AvroRemoteException {
-        log.trace("clear all...");
         try {
             Thread.sleep(1000);
+            log.trace("clear all...");
         } catch (InterruptedException ignored) {}
         return null;
     }

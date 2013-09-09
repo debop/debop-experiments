@@ -3,6 +3,7 @@ package kr.springmvc.experiments.init;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -19,6 +20,7 @@ import java.util.Locale;
  */
 @Configuration
 @ComponentScan("kr.springmvc.experiments.controllers")
+@EnableAsync
 @EnableWebMvc       // Enable to use Spring's annotations in the code
 public class WebAppConfig {
 

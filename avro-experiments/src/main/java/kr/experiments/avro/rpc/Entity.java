@@ -17,10 +17,14 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
     @Deprecated public java.lang.CharSequence body;
     @Deprecated public java.util.Map<java.lang.CharSequence, java.lang.CharSequence> attrs;
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public Entity() {}
 
-    /** All-args constructor. */
+    /**
+     * All-args constructor.
+     */
     public Entity(java.lang.Long id, java.lang.Long createdTime, java.lang.CharSequence body, java.util.Map<java.lang.CharSequence, java.lang.CharSequence> attrs) {
         this.id = id;
         this.createdTime = createdTime;
@@ -67,7 +71,9 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
         }
     }
 
-    /** Gets the value of the 'id' field. */
+    /**
+     * Gets the value of the 'id' field.
+     */
     public java.lang.Long getId() {
         return id;
     }
@@ -81,7 +87,9 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
         this.id = value;
     }
 
-    /** Gets the value of the 'createdTime' field. */
+    /**
+     * Gets the value of the 'createdTime' field.
+     */
     public java.lang.Long getCreatedTime() {
         return createdTime;
     }
@@ -95,7 +103,9 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
         this.createdTime = value;
     }
 
-    /** Gets the value of the 'body' field. */
+    /**
+     * Gets the value of the 'body' field.
+     */
     public java.lang.CharSequence getBody() {
         return body;
     }
@@ -109,7 +119,9 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
         this.body = value;
     }
 
-    /** Gets the value of the 'attrs' field. */
+    /**
+     * Gets the value of the 'attrs' field.
+     */
     public java.util.Map<java.lang.CharSequence, java.lang.CharSequence> getAttrs() {
         return attrs;
     }
@@ -123,41 +135,55 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
         this.attrs = value;
     }
 
-    /** Creates a new Entity RecordBuilder */
+    /**
+     * Creates a new Entity RecordBuilder
+     */
     public static kr.experiments.avro.rpc.Entity.Builder newBuilder() {
         return new kr.experiments.avro.rpc.Entity.Builder();
     }
 
-    /** Creates a new Entity RecordBuilder by copying an existing Builder */
+    /**
+     * Creates a new Entity RecordBuilder by copying an existing Builder
+     */
     public static kr.experiments.avro.rpc.Entity.Builder newBuilder(kr.experiments.avro.rpc.Entity.Builder other) {
         return new kr.experiments.avro.rpc.Entity.Builder(other);
     }
 
-    /** Creates a new Entity RecordBuilder by copying an existing Entity instance */
+    /**
+     * Creates a new Entity RecordBuilder by copying an existing Entity instance
+     */
     public static kr.experiments.avro.rpc.Entity.Builder newBuilder(kr.experiments.avro.rpc.Entity other) {
         return new kr.experiments.avro.rpc.Entity.Builder(other);
     }
 
-    /** RecordBuilder for Entity instances. */
+    /**
+     * RecordBuilder for Entity instances.
+     */
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Entity>
-            implements org.apache.avro.data.RecordBuilder<Entity> {
+        implements org.apache.avro.data.RecordBuilder<Entity> {
 
         private long id;
         private long createdTime;
         private java.lang.CharSequence body;
         private java.util.Map<java.lang.CharSequence, java.lang.CharSequence> attrs;
 
-        /** Creates a new Builder */
+        /**
+         * Creates a new Builder
+         */
         private Builder() {
             super(kr.experiments.avro.rpc.Entity.SCHEMA$);
         }
 
-        /** Creates a Builder by copying an existing Builder */
+        /**
+         * Creates a Builder by copying an existing Builder
+         */
         private Builder(kr.experiments.avro.rpc.Entity.Builder other) {
             super(other);
         }
 
-        /** Creates a Builder by copying an existing Entity instance */
+        /**
+         * Creates a Builder by copying an existing Entity instance
+         */
         private Builder(kr.experiments.avro.rpc.Entity other) {
             super(kr.experiments.avro.rpc.Entity.SCHEMA$);
             if (isValidValue(fields()[0], other.id)) {
@@ -178,12 +204,16 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
             }
         }
 
-        /** Gets the value of the 'id' field */
+        /**
+         * Gets the value of the 'id' field
+         */
         public java.lang.Long getId() {
             return id;
         }
 
-        /** Sets the value of the 'id' field */
+        /**
+         * Sets the value of the 'id' field
+         */
         public kr.experiments.avro.rpc.Entity.Builder setId(long value) {
             validate(fields()[0], value);
             this.id = value;
@@ -191,23 +221,31 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
             return this;
         }
 
-        /** Checks whether the 'id' field has been set */
+        /**
+         * Checks whether the 'id' field has been set
+         */
         public boolean hasId() {
             return fieldSetFlags()[0];
         }
 
-        /** Clears the value of the 'id' field */
+        /**
+         * Clears the value of the 'id' field
+         */
         public kr.experiments.avro.rpc.Entity.Builder clearId() {
             fieldSetFlags()[0] = false;
             return this;
         }
 
-        /** Gets the value of the 'createdTime' field */
+        /**
+         * Gets the value of the 'createdTime' field
+         */
         public java.lang.Long getCreatedTime() {
             return createdTime;
         }
 
-        /** Sets the value of the 'createdTime' field */
+        /**
+         * Sets the value of the 'createdTime' field
+         */
         public kr.experiments.avro.rpc.Entity.Builder setCreatedTime(long value) {
             validate(fields()[1], value);
             this.createdTime = value;
@@ -215,23 +253,31 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
             return this;
         }
 
-        /** Checks whether the 'createdTime' field has been set */
+        /**
+         * Checks whether the 'createdTime' field has been set
+         */
         public boolean hasCreatedTime() {
             return fieldSetFlags()[1];
         }
 
-        /** Clears the value of the 'createdTime' field */
+        /**
+         * Clears the value of the 'createdTime' field
+         */
         public kr.experiments.avro.rpc.Entity.Builder clearCreatedTime() {
             fieldSetFlags()[1] = false;
             return this;
         }
 
-        /** Gets the value of the 'body' field */
+        /**
+         * Gets the value of the 'body' field
+         */
         public java.lang.CharSequence getBody() {
             return body;
         }
 
-        /** Sets the value of the 'body' field */
+        /**
+         * Sets the value of the 'body' field
+         */
         public kr.experiments.avro.rpc.Entity.Builder setBody(java.lang.CharSequence value) {
             validate(fields()[2], value);
             this.body = value;
@@ -239,24 +285,32 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
             return this;
         }
 
-        /** Checks whether the 'body' field has been set */
+        /**
+         * Checks whether the 'body' field has been set
+         */
         public boolean hasBody() {
             return fieldSetFlags()[2];
         }
 
-        /** Clears the value of the 'body' field */
+        /**
+         * Clears the value of the 'body' field
+         */
         public kr.experiments.avro.rpc.Entity.Builder clearBody() {
             body = null;
             fieldSetFlags()[2] = false;
             return this;
         }
 
-        /** Gets the value of the 'attrs' field */
+        /**
+         * Gets the value of the 'attrs' field
+         */
         public java.util.Map<java.lang.CharSequence, java.lang.CharSequence> getAttrs() {
             return attrs;
         }
 
-        /** Sets the value of the 'attrs' field */
+        /**
+         * Sets the value of the 'attrs' field
+         */
         public kr.experiments.avro.rpc.Entity.Builder setAttrs(java.util.Map<java.lang.CharSequence, java.lang.CharSequence> value) {
             validate(fields()[3], value);
             this.attrs = value;
@@ -264,12 +318,16 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
             return this;
         }
 
-        /** Checks whether the 'attrs' field has been set */
+        /**
+         * Checks whether the 'attrs' field has been set
+         */
         public boolean hasAttrs() {
             return fieldSetFlags()[3];
         }
 
-        /** Clears the value of the 'attrs' field */
+        /**
+         * Clears the value of the 'attrs' field
+         */
         public kr.experiments.avro.rpc.Entity.Builder clearAttrs() {
             attrs = null;
             fieldSetFlags()[3] = false;
@@ -283,7 +341,8 @@ public class Entity extends org.apache.avro.specific.SpecificRecordBase implemen
                 record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
                 record.createdTime = fieldSetFlags()[1] ? this.createdTime : (java.lang.Long) defaultValue(fields()[1]);
                 record.body = fieldSetFlags()[2] ? this.body : (java.lang.CharSequence) defaultValue(fields()[2]);
-                record.attrs = fieldSetFlags()[3] ? this.attrs : (java.util.Map<java.lang.CharSequence, java.lang.CharSequence>) defaultValue(fields()[3]);
+                record.attrs = fieldSetFlags()[3] ? this.attrs :
+                               (java.util.Map<java.lang.CharSequence, java.lang.CharSequence>) defaultValue(fields()[3]);
                 return record;
             } catch (Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
