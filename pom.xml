@@ -20,6 +20,7 @@
 		<module>avro-experiments</module>
 		<module>jersey-experiments</module>
 		<module>thrift-experiments</module>
+		<module>rabbitmq-experiments</module>
 	</modules>
 
 	<properties>
@@ -1084,6 +1085,20 @@
 				<groupId>org.apache.avro</groupId>
 				<artifactId>avro-ipc</artifactId>
 				<version>${avro.version}</version>
+			</dependency>
+
+			<!-- Spring AMQP -->
+			<dependency>
+				<groupId>org.springframework.amqp</groupId>
+				<artifactId>spring-amqp</artifactId>
+				<version>1.2.0.RELEASE</version>
+			</dependency>
+
+			<!-- RabbitMQ -->
+			<dependency>
+				<groupId>com.rabbitmq</groupId>
+				<artifactId>amqp-client</artifactId>
+				<version>3.1.4</version>
 			</dependency>
 
 			<!-- Twitter4J -->
