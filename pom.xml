@@ -21,6 +21,7 @@
 		<module>jersey-experiments</module>
 		<module>thrift-experiments</module>
 		<module>rabbitmq-experiments</module>
+		<module>gcm-experiments</module>
 	</modules>
 
 	<properties>
